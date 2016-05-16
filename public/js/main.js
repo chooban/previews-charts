@@ -31,8 +31,9 @@ function drawDonutChart(data) {
   var radius = Math.min(width, height) / 2;
   var donutWidth = 75;
 
-  var data = countByPublisher(data);
-  var colour = d3.scale.category20b();
+  var data = topResults(countByPublisher(data), 10);
+
+  var colour = d3.scale.category20();
 
   var svg = d3.select('.content')
               .html('')
@@ -58,6 +59,12 @@ function drawDonutChart(data) {
                     .attr('fill', function(d) {
                       return colour(d.data.publisher);
                     });
+
+  function topResults(data, n) {
+    var newData = data.slice(0, n);
+
+    return newData;
+  }
 }
 
 function drawBarChart(data) {
