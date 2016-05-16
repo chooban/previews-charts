@@ -1,6 +1,6 @@
 var d3 = require('d3');
 var barChartFactory = require('./charts/bar-chart.component');
-var pieChartFactory = require('./charts/pie-chart.component');
+var donutChartFactory = require('./charts/donut-chart.component');
 var _ = require('lodash/function');
 
 $('.content').ready(setup);
@@ -15,7 +15,7 @@ function setup() {
   d3.select('.donut-item')
     .on('click.redraw', donutChart);
 
-  barChart();
+  donutChart();
 }
 
 function retrievePreviewsData(done) {
@@ -31,14 +31,14 @@ function retrievePreviewsData(done) {
 }
 
 function drawDonutChart(data) {
-  var pieChart = pieChartFactory();
+  var donutChart = donutChartFactory();
   var data = topResults(countByPublisher(data), 10);
 
   var chart = d3.select('.content').html('')
                 .append('div')
                   .attr('class', 'chart')
                   .datum(data)
-                  .call(pieChart);
+                  .call(donutChart);
 
   function topResults(data, n) {
     var newData = data.slice(0, n);
