@@ -1,0 +1,17 @@
+{
+  "name": "previews-graphs",
+  "version": "1.0.0",
+  "description": "D3 graphs of the Previews catalogue data",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ross Hendry (rhendry@googlemail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express-http-proxy": "^0.6.0",
+    "forever": "^0.15.1"
+  }
+}
