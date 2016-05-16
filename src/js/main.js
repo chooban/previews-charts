@@ -1,6 +1,7 @@
 var d3 = require('d3');
 var barChartFactory = require('./charts/bar-chart.component');
 var pieChartFactory = require('./charts/pie-chart.component');
+var _ = require('lodash/function');
 
 $('.content').ready(setup);
 
