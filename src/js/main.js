@@ -1,7 +1,7 @@
 var d3 = require('d3');
 var barChartFactory = require('./charts/bar-chart.component');
 
-$('.content').waitUntilExists(setup, true);
+$('.content').ready(setup);
 
 function setup() {
   var barChart = retrievePreviewsData.bind(this, drawBarChart);

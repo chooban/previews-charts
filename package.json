@@ -4,21 +4,21 @@
   "description": "D3 graphs of the Previews catalogue data",
   "main": "index.js",
   "scripts": {
-    "devbuild": "watchify src/js/main.js -o public/js/main.js",
-    "prodbuild": "browserify src/js/main.js -d -p [minifyify --map bundle.js.map --output bundle.js.map] > public/js/main.js",
+    "devbuild": "watchify src/js/bootstrapper.js -o public/js/main.js",
+    "prodbuild": "browserify src/js/bootstrapper.js -d -p [minifyify --map bundle.js.map --output bundle.js.map] > public/js/main.js",
     "start": "forever index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ross Hendry (rhendry@googlemail.com)",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "express-http-proxy": "^0.6.0",
-    "forever": "^0.15.1"
-  },
-  "devDependencies": {
+    "bootstrap": "^3.3.6",
     "browserify": "^13.0.1",
     "d3": "^3.5.17",
+    "express": "^4.13.4",
+    "express-http-proxy": "^0.6.0",
+    "forever": "^0.15.1",
+    "jquery": "^2.2.3",
     "lodash": "^4.12.0",
     "minifyify": "^7.3.3",
     "watchify": "^3.7.0"
