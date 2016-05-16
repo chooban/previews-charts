@@ -4,8 +4,8 @@
   "description": "D3 graphs of the Previews catalogue data",
   "main": "index.js",
   "scripts": {
-    "devbuild": "watchify src/js/bootstrapper.js -o public/js/main.js",
-    "prodbuild": "browserify src/js/bootstrapper.js -d -p [minifyify --map bundle.js.map --output bundle.js.map] > public/js/main.js",
+    "devbuild": "watchify src/js/bootstrapper.js -o public/js/main.js -v",
+    "prodbuild": "browserify src/js/bootstrapper.js -d -p [minifyify --map main.js.map --output main.js.map] > public/js/main.js; cp main.js.map public/js/",
     "start": "forever index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.1",
+    "compression": "^1.6.2",
     "d3": "^3.5.17",
     "express": "^4.13.4",
     "express-http-proxy": "^0.6.0",

@@ -1,5 +1,6 @@
 var d3 = require('d3');
 var barChartFactory = require('./charts/bar-chart.component');
+var pieChartFactory = require('./charts/pie-chart.component');
 
 $('.content').ready(setup);
 
@@ -29,39 +30,14 @@ function retrievePreviewsData(done) {
 }
 
 function drawDonutChart(data) {
-  var width = 360;
-  var height = 360;
-  var radius = Math.min(width, height) / 2;
-  var donutWidth = 75;
-
+  var pieChart = pieChartFactory();
   var data = topResults(countByPublisher(data), 10);
 
-  var colour = d3.scale.category20();
-
-  var svg = d3.select('.content')
-              .html('')
-            .append('svg')
-              .attr('width', width)
-              .attr('height', height)
-            .append('g')
-              .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
-
-  var arc = d3.svg.arc()
-              .innerRadius(radius - donutWidth)
-              .outerRadius(radius);
-
-  var pie = d3.layout.pie()
-              .value(function(d) { return d.count; })
-              .sort(null);
-
-  var path = svg.selectAll('path')
-                .data(pie(data))
-                .enter()
-                  .append('path')
-                    .attr('d', arc)
-                    .attr('fill', function(d) {
-                      return colour(d.data.publisher);
-                    });
+  var chart = d3.select('.content').html('')
+                .append('div')
+                  .attr('class', 'chart')
+                  .datum(data)
+                  .call(pieChart);
 
   function topResults(data, n) {
     var newData = data.slice(0, n);

@@ -1,5 +1,5 @@
 var d3 = require('d3');
-var _ = require('lodash');
+var _ = require('lodash/util');
 
 function barChartFactory() {
 

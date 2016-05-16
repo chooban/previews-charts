@@ -2,6 +2,7 @@
 
 const express = require('express');
 const httpProxy = require('express-http-proxy');
+const compression = require('compression');
 const app = express();
 
 const apiProxy = (host, port) => {
@@ -14,6 +15,7 @@ const apiProxy = (host, port) => {
   }
 };
 
+app.use(compression());
 app.use(express.static('public'));
 app.use('/api', httpProxy('previewsapi:8100', {
   forwardPath: function(req, res) {
