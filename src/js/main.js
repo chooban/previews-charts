@@ -1,3 +1,6 @@
+var d3 = require('d3');
+var barChartFactory = require('./charts/bar-chart.component');
+
 $('.content').waitUntilExists(setup, true);
 
 function setup() {
@@ -68,30 +71,20 @@ function drawDonutChart(data) {
 }
 
 function drawBarChart(data) {
+  var barChart = barChartFactory();
   var data = countByPublisher(data);
-  var max = d3.max(data.map(function(e) { return e.count; }));
 
-  draw();
+  var chart = d3.select('.content')
+                  .html('')
+                .append('div')
+                  .attr('class', 'chart')
+                  .datum(data)
+                  .call(barChart);
 
-  d3.select(window).on('resize', draw);
+  d3.select(window).on('resize', _.debounce(draw, 250));
 
   function draw() {
-    var chart = d3.select('.content')
-                    .html('')
-                  .append('div')
-                    .attr('class', 'chart');
-
-    var maxWidth = parseInt(d3.select('.chart').style('width'), 10);
-    var xScale = d3.scale.linear()
-                  .domain([0, max])
-                  .range([0, maxWidth]);
-
-    chart.selectAll('div')
-          .data(data)
-          .enter()
-            .append('div')
-              .style('width', function(d) { return xScale(d.count) + "px"; })
-              .text(function(d) { return d.publisher + " (" + d.count + ")"; });
+    chart.call(barChart);
   }
 }
 
