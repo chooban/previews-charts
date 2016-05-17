@@ -12,3 +12,10 @@ body {
   margin: 1px;
   color: white;
 }
+
+.chart polyline {
+  stroke-opacity: 0.3;
+  stroke-width: 2px;
+  stroke: black;
+  fill: none;
+}

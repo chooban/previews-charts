@@ -4,14 +4,15 @@ const _ = require('lodash/util');
 function pieChartFactory() {
 
   const pieChart = function(selection) {
-    let width = 720;
-    let height = 500;
-    let radius = Math.min(width, height) / 2;
-    let labelr = radius - 10;
-    let donutWidth = 75;
     const colour = d3.scale.category20();
 
     selection.each(function(data) {
+      let width = parseInt(d3.select(this).style('width'), 10);
+      let height = 500;
+      let radius = Math.min(width, height) / 2;
+      let labelr = radius - 10;
+      let donutWidth = 75;
+
       const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 1;
       const svg = d3.select(this)
                     .append('svg')
@@ -25,12 +26,12 @@ function pieChartFactory() {
       svg.append('g').attr('class', 'lines');
 
       const arc = d3.svg.arc()
-                  .innerRadius(radius * 0.4)
-                  .outerRadius(radius * 0.8);
+                  .outerRadius(radius * 0.8)
+                  .innerRadius(radius * 0.4);
 
       const outerArc = d3.svg.arc()
-                        .innerRadius(radius * 1.0)
-                        .outerRadius(radius * 1.0);
+                        .innerRadius(radius * 0.9)
+                        .outerRadius(radius * 0.9);
 
       const pie = d3.layout.pie()
                   .value(_.property('count'))
@@ -56,18 +57,34 @@ function pieChartFactory() {
         .append('text')
         .attr('dy', '.35em')
         .attr('transform', (d) => {
-          let [ x, y ] = arc.centroid(d);
-          // Pythagorean theorem for hypotenuse
-          var h = Math.sqrt(x*x + y*y);
-          return 'translate(' + (x/h * labelr) +  ',' + (y/h * labelr) +  ')';
+          let pos = outerArc.centroid(d);
+
+          //console.log("centroid for " + d.data.publisher + " is " + pos);
+          pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1)
+          return 'translate(' + pos + ')';
         })
         .attr('text-anchor', (d) => (
           // Are we past the center?
-          (d.endAngle + d.startAngle)/2 > Math.PI ? 'end' : 'start'
+          (d.endAngle + d.startAngle) / 2 > Math.PI ? 'end' : 'start'
         ))
         .text(_.property('data.publisher'));
 
       text.exit().remove();
+
+      const polyline = svg.select('.lines')
+                          .selectAll('polyline')
+                          .data(pie(data));
+
+      polyline.enter()
+              .append('polyline')
+              .attr('points', (d) => {
+                let pos = outerArc.centroid(d);
+                pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+                return [arc.centroid(d), outerArc.centroid(d), pos]
+              });
+
+      polyline.exit()
+              .remove();
 
     });
   }
