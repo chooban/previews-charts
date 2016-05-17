@@ -2,3 +2,4 @@ node_modules/
 public/js/main.js
 public/js/main.js.map
 *.map
+npm-debug.log

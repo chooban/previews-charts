@@ -30,7 +30,6 @@ gulp.task('devbuild', () => {
 gulp.task('build', () => {
   return browserify(browserifyConfig)
           .transform(babelify)
-          .transform(minifyify())
           .bundle()
           .pipe(source('main.js'))
           .pipe(gulp.dest('public/js/', {

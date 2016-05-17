@@ -1,5 +1,3 @@
-/*eslint-env es6*/
-
 const express = require('express');
 const httpProxy = require('express-http-proxy');
 const compression = require('compression');
