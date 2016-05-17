@@ -11,9 +11,8 @@ function pieChartFactory() {
       let height = 500;
       let radius = Math.min(width, height) / 2;
       let labelr = radius - 10;
-      let donutWidth = 75;
 
-      const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 1;
+      const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
       const svg = d3.select(this)
                     .append('svg')
                       .attr('width', width)
@@ -26,20 +25,22 @@ function pieChartFactory() {
       svg.append('g').attr('class', 'lines');
 
       const arc = d3.svg.arc()
-                  .outerRadius(radius * 0.8)
-                  .innerRadius(radius * 0.4);
+                  .innerRadius(radius * 0.4)
+                  .outerRadius(radius * 0.8);
 
       const outerArc = d3.svg.arc()
                         .innerRadius(radius * 0.9)
                         .outerRadius(radius * 0.9);
 
       const pie = d3.layout.pie()
-                  .value(_.property('count'))
-                  .sort(null);
+                    .value(_.property('count'))
+                    .sort(null);
+
+      const pieData = pie(data);
 
       const slice = svg.select('.slices')
-                    .selectAll('path.slice')
-                    .data(pie(data));
+                      .selectAll('path.slice')
+                        .data(pieData);
 
       slice.enter()
             .append('path')
@@ -50,30 +51,27 @@ function pieChartFactory() {
       slice.exit().remove();
 
       const text = svg.select('.labels')
-                    .selectAll('text')
-                      .data(pie(data));
+                      .selectAll('text')
+                        .data(pieData);
 
       text.enter()
         .append('text')
         .attr('dy', '.35em')
         .attr('transform', (d) => {
           let pos = outerArc.centroid(d);
-
-          //console.log("centroid for " + d.data.publisher + " is " + pos);
           pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1)
           return 'translate(' + pos + ')';
         })
-        .attr('text-anchor', (d) => (
-          // Are we past the center?
-          (d.endAngle + d.startAngle) / 2 > Math.PI ? 'end' : 'start'
-        ))
+        .attr('text-anchor', (d) => {
+          return midAngle(d) < Math.PI ? 'start' : 'end';
+        })
         .text(_.property('data.publisher'));
 
       text.exit().remove();
 
       const polyline = svg.select('.lines')
                           .selectAll('polyline')
-                          .data(pie(data));
+                          .data(pieData);
 
       polyline.enter()
               .append('polyline')
