@@ -53,30 +53,28 @@ function pieChartFactory() {
                     .selectAll('text')
                       .data(pie(data));
 
-      function midAngle(d){
-        return d.startAngle + (d.endAngle - d.startAngle)/2;
-      }
-
       text.enter()
         .append('text')
         .attr('dy', '.35em')
-        .attr("transform", function(d) {
+        .attr('transform', function(d) {
           var c = arc.centroid(d);
           var x = c[0];
           var y = c[1];
-          // pythagorean theorem for hypotenuse
+          // Pythagorean theorem for hypotenuse
           var h = Math.sqrt(x*x + y*y);
-          return "translate(" + (x/h * labelr) +  ',' + (y/h * labelr) +  ")";
+          return 'translate(' + (x/h * labelr) +  ',' + (y/h * labelr) +  ')';
         })
-        .attr("text-anchor", function(d) {
-          // are we past the center?
-          return (d.endAngle + d.startAngle)/2 > Math.PI ?  "end" : "start";
+        .attr('text-anchor', function(d) {
+          // Are we past the center?
+          return (d.endAngle + d.startAngle)/2 > Math.PI ?  'end' : 'start';
         })
-        .text(function(d) {
-          return d.data.publisher;
-        });
+        .text(_.property('data.publisher'));
 
       text.exit().remove();
+
+      function midAngle(d){
+        return d.startAngle + (d.endAngle - d.startAngle)/2;
+      }
     });
   }
 
