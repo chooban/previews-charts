@@ -1,14 +1,15 @@
-var d3 = require('d3');
-var barChartFactory = require('./charts/bar-chart.component');
-var donutChartFactory = require('./charts/donut-chart.component');
-var _ = require('lodash/function');
+const d3 = require('d3');
+const barChartFactory = require('./charts/bar-chart.component');
+const donutChartFactory = require('./charts/donut-chart.component');
+const func = require('lodash/function');
+import * as Previews from './api/previews';
 
 $('.content').ready(setup);
 
 function setup() {
   let currentChart = drawDonutChart;
 
-  retrievePreviewsList((listOfIssues) => {
+  Previews.retrievePreviewsList((listOfIssues) => {
     const row = d3.select('.content')
                     .html('')
                     .append('div')
@@ -21,7 +22,7 @@ function setup() {
                             .classed('issueSelect', true)
                             .on('change', function() {
                               const issue = d3.select('.issueSelect').property('value');
-                              retrievePreviewsData(issue, currentChart);
+                              Previews.retrievePreviewsData(issue, currentChart);
                             })
                             .selectAll('option')
                               .data(listOfIssues)
@@ -36,53 +37,23 @@ function setup() {
 
     d3.select('.issueSelect').on('change')();
   });
-
-  //d3.select('.bar-item')
-    //.on('click.redraw', barChart);
-
-  //d3.select('.donut-item')
-    //.on('click.redraw', donutChart);
-
-  //donutChart();
 }
 
-const retrievePreviewsData = (issue, done) => {
-  d3.json('api/previews/' + issue, (err, data) => {
-    if (err) {
-      console.error(err);
-      d3.select('.content').text('Sorry, could not load required data');
-      return;
-    }
-
-    done(data);
-  })
-}
-
-const retrievePreviewsList = (done) => {
-  d3.json('api/previews/', (err, data) => {
-    if (err) {
-      console.error(err);
-      d3.select('.content').text('Sorry, could not load required data');
-      return;
-    }
-
-    done(data);
-  });
-}
 
 function drawDonutChart(data) {
   var donutChart = donutChartFactory();
-  var data = topResults(countByPublisher(data.contents), 10);
+  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS']
+  var data = topResults(countByPublisher(data.contents), 10, ignore);
 
   var chart = d3.select('.chart')
                   .html('')
                   .datum(data)
                   .call(donutChart);
 
-  function topResults(data, n) {
-    var newData = data.slice(0, n);
-
-    return newData;
+  function topResults(data, n, ignore = []) {
+    const results = data.filter((d) => !ignore.includes(d.publisher))
+                        .slice(0, n);
+    return results;
   }
 }
 
@@ -95,7 +66,7 @@ function drawBarChart(data) {
                   .datum(data)
                   .call(barChart);
 
-  d3.select(window).on('resize', _.debounce(draw, 250));
+  d3.select(window).on('resize', func.debounce(draw, 250));
 
   function draw() {
     chart.call(barChart);
