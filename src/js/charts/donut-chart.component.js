@@ -64,8 +64,6 @@ function pieChartFactory() {
                 .attr('d', arc)
                 .attr('fill', (d) => colour(d.data.publisher))
                 .attr('class', 'slice')
-                .style('stroke', (d) => sliceBorderColour(d.data.publisher))
-                .style('stroke-width', '0')
                 .on('mouseover', (d) => {
                   console.log('Mousing over ' + d.data.publisher);
                 });

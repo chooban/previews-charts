@@ -13,17 +13,10 @@ body {
   color: white;
 }
 
-g {
-  pointer-events: all;
-}
-/*.chart .sliceGroup:hover .slice {*/
-  /*stroke-width: 5px;*/
-  /*z-index: 100;*/
-/*}*/
-
 .chart polyline {
   stroke-opacity: 0.3;
   stroke-width: 2px;
   stroke: black;
   fill: none;
+  pointer-events: none;
 }
