@@ -6,37 +6,76 @@ var _ = require('lodash/function');
 $('.content').ready(setup);
 
 function setup() {
-  var barChart = retrievePreviewsData.bind(this, drawBarChart);
-  var donutChart = retrievePreviewsData.bind(this, drawDonutChart);
+  let currentChart = drawDonutChart;
 
-  d3.select('.bar-item')
-    .on('click.redraw', barChart);
+  retrievePreviewsList((listOfIssues) => {
+    const row = d3.select('.content')
+                    .html('')
+                    .append('div')
+                      .classed('row', true);
 
-  d3.select('.donut-item')
-    .on('click.redraw', donutChart);
+    const firstColumn = row.append('div').classed('col-md-2', true);
+    row.append('div').classed('col-md-10', true).classed('chart', true);
 
-  donutChart();
+    const list = firstColumn.append('select')
+                            .classed('issueSelect', true)
+                            .on('change', function() {
+                              const issue = d3.select('.issueSelect').property('value');
+                              retrievePreviewsData(issue, currentChart);
+                            })
+                            .selectAll('option')
+                              .data(listOfIssues)
+
+    list.enter()
+        .append('option')
+          .attr('selected', (d, i) => i === 0 ? 'true' : '')
+          .property('selected', (d, i) => i === 0)
+          .text((d) => d);
+
+    list.exit().remove();
+
+    d3.select('.issueSelect').on('change')();
+  });
+
+  //d3.select('.bar-item')
+    //.on('click.redraw', barChart);
+
+  //d3.select('.donut-item')
+    //.on('click.redraw', donutChart);
+
+  //donutChart();
 }
 
-function retrievePreviewsData(done) {
-  d3.json('api/previews/latest', function(err, data) {
+const retrievePreviewsData = (issue, done) => {
+  d3.json('api/previews/' + issue, (err, data) => {
     if (err) {
       console.error(err);
       d3.select('.content').text('Sorry, could not load required data');
       return;
     }
 
-    done(data.contents);
+    done(data);
+  })
+}
+
+const retrievePreviewsList = (done) => {
+  d3.json('api/previews/', (err, data) => {
+    if (err) {
+      console.error(err);
+      d3.select('.content').text('Sorry, could not load required data');
+      return;
+    }
+
+    done(data);
   });
 }
 
 function drawDonutChart(data) {
   var donutChart = donutChartFactory();
-  var data = topResults(countByPublisher(data), 10);
+  var data = topResults(countByPublisher(data.contents), 10);
 
-  var chart = d3.select('.content').html('')
-                .append('div')
-                  .attr('class', 'chart')
+  var chart = d3.select('.chart')
+                  .html('')
                   .datum(data)
                   .call(donutChart);
 
@@ -49,12 +88,10 @@ function drawDonutChart(data) {
 
 function drawBarChart(data) {
   var barChart = barChartFactory();
-  var data = countByPublisher(data);
+  var data = countByPublisher(data.contents);
 
-  var chart = d3.select('.content')
+  var chart = d3.select('.chart')
                   .html('')
-                .append('div')
-                  .attr('class', 'chart')
                   .datum(data)
                   .call(barChart);
 
