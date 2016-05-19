@@ -1,9 +1,10 @@
-FROM mhart/alpine-node:5.1.0
+FROM mhart/alpine-node:5.11.1
 MAINTAINER Ross Hendry "rhendry@googlemail.com"
 
-ADD . /opt/apps/previews-charts
-WORKDIR /opt/apps/previews-charts
+ADD . /build
+WORKDIR /build
+RUN sh ./build.sh
+WORKDIR /opt/apps/previews-charts/
 
-RUN npm install; npm run build
 EXPOSE 3001
 CMD ["npm", "start"]
