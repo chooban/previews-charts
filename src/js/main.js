@@ -1,6 +1,6 @@
 const d3 = require('d3');
-const barChartFactory = require('./charts/bar-chart.component');
-const donutChartFactory = require('./charts/donut-chart.component');
+const barChart = require('./charts/bar-chart.component')();
+const donutChart = require('./charts/donut-chart.component')();
 const func = require('lodash/function');
 import * as Previews from './api/previews';
 
@@ -41,28 +41,28 @@ function setup() {
 
 
 function drawDonutChart(data) {
-  var donutChart = donutChartFactory();
-  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS']
-  var data = topResults(countByPublisher(data.contents), 10, ignore);
+  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS'];
+  const toExtract = /(IMAGE|MARVEL|DC COMICS|DARK HORSE|IDW)/i;
+  //var data = topResults(countByPublisher(data.contents), 10, ignore);
+
+  const filteredData = countByPublisher(data.contents)
+                          .filter((d) => d.label.match(toExtract) !== null);
 
   var chart = d3.select('.chart')
-                  .html('')
-                  .datum(data)
+                  .datum(filteredData)
                   .call(donutChart);
 
   function topResults(data, n, ignore = []) {
-    const results = data.filter((d) => !ignore.includes(d.publisher))
+    const results = data.filter((d) => !ignore.includes(d.label))
                         .slice(0, n);
     return results;
   }
 }
 
 function drawBarChart(data) {
-  var barChart = barChartFactory();
   var data = countByPublisher(data.contents);
 
   var chart = d3.select('.chart')
-                  .html('')
                   .datum(data)
                   .call(barChart);
 
@@ -79,18 +79,16 @@ function countByPublisher(previewsContents) {
                           .sort(byValue);
 
   function byValue(a, b) {
-    return b.count - a.count;
+    return b.value - a.value;
   }
 
   function countByKey(acc, item) {
-    var idx = acc.findIndex(function(e, idx) {
-      return (e.publisher === item.publisher);
-    });
+    const idx = acc.findIndex((e, idx) => e.label === item.label);
 
     if (idx > -1) {
       acc[idx] = {
-        publisher: item.publisher,
-        count: acc[idx].count + 1
+        label: item.label,
+        value: acc[idx].value + 1
       };
     } else {
       acc.push(item);
@@ -101,8 +99,8 @@ function countByPublisher(previewsContents) {
 
   function mapByPublisher(lineItem) {
     return {
-      publisher: lineItem.publisher,
-      count: 1
+      label: lineItem.publisher,
+      value: 1
     }
   }
 }

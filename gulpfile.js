@@ -25,10 +25,6 @@ gulp.task('devbuild', () => {
           .transform(babelify)
           .bundle()
           .pipe(source('main.js'))
-          //.pipe(buffer())
-          //.pipe(sourcemaps.init(sourceMapsConfig))
-          //.pipe(uglify().on('error', gutil.log))
-          //.pipe(sourcemaps.write('./'))
           .pipe(gulp.dest(output, {
             overwrite: true
           }));
@@ -39,6 +35,10 @@ gulp.task('build', () => {
           .transform(babelify)
           .bundle()
           .pipe(source('main.js'))
+          .pipe(buffer())
+          .pipe(sourcemaps.init(sourceMapsConfig))
+          .pipe(uglify().on('error', gutil.log))
+          .pipe(sourcemaps.write('./'))
           .pipe(gulp.dest(output, {
             overwrite: true
           }));

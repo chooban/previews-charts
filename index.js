@@ -15,6 +15,7 @@ const apiProxy = (host, port) => {
 
 app.use(compression());
 app.use(express.static('public'));
+app.set('x-powered-by', false);
 app.use('/api', httpProxy('previewsapi:8100', {
   forwardPath: function(req, res) {
     return require('url').parse(req.url).path;
