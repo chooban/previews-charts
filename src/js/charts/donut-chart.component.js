@@ -201,9 +201,7 @@ function pieChartFactory() {
                 .attr('fill', (d) => colour(d.data.label))
                 .attr('class', 'slice')
                 .on('click', function(d) {
-                  console.log("Clicked!");
-                  console.log(dispatch);
-                  dispatch.sliceClicked(d);
+                  dispatch.sliceClicked(d.data);
                 })
                 .each(function(d) {
                   this._current = d;

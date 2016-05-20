@@ -20,3 +20,7 @@ body {
   fill: none;
   pointer-events: none;
 }
+
+.chart text {
+  pointer-events: none;
+}

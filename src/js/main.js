@@ -43,15 +43,49 @@ function setup() {
 function drawDonutChart(data) {
   const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS'];
   const toExtract = /(IMAGE|MARVEL|DC COMICS|DARK HORSE|IDW)/i;
-  //var data = topResults(countByPublisher(data.contents), 10, ignore);
 
-  let byPublisher = countByPublisher(data.contents);
+  let byPublisher = _.map(_.countBy(data.contents, _.property('publisher')), (objValue, key) => {
+    return {
+      label: key,
+      value: objValue
+    }
+  });
+
   let topTen = valueGreaterThan(byPublisher, 100, ignore);
+
+  topTen = _.map(topTen, (value) => {
+    let publisherItems = _.filter(data.contents, (d) => d.publisher === value.label);
+
+    const trades = _.remove(publisherItems, (d) => d.title.match(/ TP /));
+    const hardcovers = _.remove(publisherItems, (d) => d.title.match(/ HC /));
+
+    const childData = [
+      {
+        label: 'Trades',
+        value: trades.length
+      },
+      {
+        label: 'HC Trades',
+        value: hardcovers.length
+      },
+      {
+        label: 'Floppies',
+        value: publisherItems.length
+      }
+    ];
+
+    value.childData = childData;
+    return value;
+  });
 
   let others = _.differenceBy(byPublisher, topTen, _.property('label'));
   let othersTotaled = others.reduce(
-    (acc, item) => { acc.value += item.value; return acc; },
-    { label: 'OTHERS', value: 0 }
+    (acc, item) => {
+      acc.value += item.value;
+      acc.childData.push(item);
+      return acc;
+    },
+    { label: 'OTHERS', value: 0, childData: [] }
   );
 
   topTen.push(othersTotaled);
@@ -61,7 +95,11 @@ function drawDonutChart(data) {
       .call(donutChart);
 
   donutChart.on('sliceClicked', function(d) {
-    console.log(d);
+    if (d.childData) {
+      d3.select('.chart')
+        .datum(d.childData)
+        .call(donutChart);
+    }
   });
 
   function valueGreaterThan(data, n, ignore) {
