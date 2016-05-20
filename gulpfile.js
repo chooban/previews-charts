@@ -23,7 +23,10 @@ const output = 'public/js';
 gulp.task('devbuild', () => {
   return browserify(browserifyConfig)
           .transform(babelify)
-          .bundle()
+          .bundle().on('error', function(e) {
+            gutil.log(e);
+            this.emit('end');
+          })
           .pipe(source('main.js'))
           .pipe(gulp.dest(output, {
             overwrite: true
