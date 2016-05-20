@@ -73,97 +73,111 @@ function pieChartFactory() {
       container.append('g').attr('class', 'labels');
       container.append('g').attr('class', 'lines');
 
-      let slice = svg.select('.slices')
-                        .selectAll('path.slice')
-                        .data(pie(was), key);
+      addSlices(was, is, data);
+      addTextLabels(was, is, data);
+      addPolylines(was, is, data);
 
-      slice.enter()
-            .insert('path')
-              .attr('fill', (d) => colour(d.data.label))
-              .attr('class', 'slice')
+      function addPolylines(was, is, data) {
+        let lines = svg.select('.lines').selectAll('polyline').data(pie(was), key);
+
+        lines.enter()
+                .append('polyline')
+                .style('opacity', 0)
+                .each(function(d) {
+                  this._current = d;
+                });
+
+        lines = svg.select('.lines').selectAll('polyline').data(pie(is), key);
+
+        lines.transition().duration(1000)
+              .style('opacity', (d) => d.data.value == 0 ? 0 : 0.5)
+              .attrTween('points', function(d) {
+                const interpolate = d3.interpolate(this._current, d);
+                return (t) => {
+                  var d2 = interpolate(t);
+                  this._current = d2;
+
+                  let pos = outerArc.centroid(d2);
+                  pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                  return [arc.centroid(d2), outerArc.centroid(d2), pos];
+                }
+              });
+
+        lines = svg.select('.lines').selectAll('polyline').data(pie(data), key);
+        lines.exit().transition().delay(1000).remove();
+      }
+
+      function addTextLabels(was, is, data) {
+        let text = svg.select('.labels').selectAll('text.label').data(pie(was), key);
+
+        text.enter()
+            .append('text')
+              .attr('class', 'label')
+              .attr('dy', '0.35em')
+              .style('opacity', 0)
+              .text((d) => d.data.label)
               .each(function(d) {
                 this._current = d;
               });
 
-      slice = svg.select('.slices')
-                  .selectAll('path.slice')
-                  .data(pie(is), key);
+        text = svg.select('.labels').selectAll('text.label').data(pie(is), key);
 
-      slice.transition().duration(1000)
-          .attrTween('d', function(d) {
-            const interpolate = d3.interpolate(this._current, d);
+        text.transition().duration(1000)
+            .style('opacity', (d) => d.data.value == 0 ? 0 : 1)
+            .attrTween('transform', function(d) {
+              const interpolate = d3.interpolate(this._current, d);
+              return (t) => {
+                const d2 = interpolate(t);
+                this._current = d2;
 
-            return (t) => {
-              this._current = interpolate(t);
-              return arc(this._current);
-            };
-          });
+                let pos = outerArc.centroid(d2);
+                pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                return 'translate(' + pos + ')';
+              }
+            })
+            .styleTween('text-anchor', function(d) {
+              const interpolate = d3.interpolate(this._current, d);
+              return (t) => midAngle(interpolate(t)) < Math.PI ? 'start' : 'end' ;
+            });
 
-      slice = svg.select('.slices')
-                  .selectAll('path.slice')
-                  .data(pie(data), key);
+        text = svg.select('.labels').selectAll('text.label').data(pie(data), key);
 
-      slice.exit().transition().delay(1000).duration(0).remove();
+        text.exit().transition().delay(1000).remove();
+      }
 
-      //sliceGroup.append('text')
-                //.attr('dy', '.35em')
-                //.attr('transform', (d) => {
-                  //let pos = outerArc.centroid(d);
-                  //pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1)
-                  //return 'translate(' + pos + ')';
-                //})
-                //.attr('text-anchor', (d) => {
-                  //return midAngle(d) < Math.PI ? 'start' : 'end';
-                //})
-                //.text(_.property('data.label'));
+      function addSlices(was, is, data) {
+        let slice = svg.select('.slices')
+                          .selectAll('path.slice')
+                          .data(pie(was), key);
 
-      //sliceGroup.append('polyline')
-                //.attr('points', (d) => {
-                  //let pos = outerArc.centroid(d);
-                  //pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
-                  //return [arc.centroid(d), outerArc.centroid(d), pos]
-                //});
+        slice.enter()
+              .insert('path')
+                .attr('fill', (d) => colour(d.data.label))
+                .attr('class', 'slice')
+                .each(function(d) {
+                  this._current = d;
+                });
 
+        slice = svg.select('.slices')
+                    .selectAll('path.slice')
+                    .data(pie(is), key);
 
-      //slice
-        //.select('text')
-        //.transition().duration(1000)
-        //.attrTween('transform', function(d) {
-          //this._current = this._current || d;
-          //const interpolate = d3.interpolate(this._current, d);
-          //this._current = interpolate(0);
+        slice.transition().duration(1000)
+            .attrTween('d', function(d) {
+              const interpolate = d3.interpolate(this._current, d);
 
-          //return (t) => {
-            //const d2 = interpolate(t);
-            //let pos = outerArc.centroid(d2);
-            //pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-            //return 'translate(' + pos + ')';
-          //};
-        //})
-        //.styleTween("text-anchor", function(d){
-          //this._current = this._current || d;
-          //const interpolate = d3.interpolate(this._current, d);
-          //this._current = interpolate(0);
+              return (t) => {
+                this._current = interpolate(t);
+                return arc(this._current);
+              };
+            });
 
-          //return (t) => midAngle(interpolate(t)) < Math.PI ? "start" : "end";
-        //});
+        slice = svg.select('.slices')
+                    .selectAll('path.slice')
+                    .data(pie(data), key);
 
-      //slice
-        //.select('polyline')
-        //.transition().duration(1000)
-        //.attrTween('points', function(d) {
-          //this._current = this._current || d;
-          //const interpolate = d3.interpolate(this._current, d);
-          //this._current = interpolate(0);
-
-          //return (t) => {
-            //const d2 = interpolate(t);
-            //let pos = outerArc.centroid(d2);
-            //pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-            //return [arc.centroid(d2), outerArc.centroid(d2), pos];
-          //};
-        //});
-
+        slice.exit().transition().delay(1000).duration(0).remove();
+      }
     });
   }
 
