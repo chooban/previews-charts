@@ -3,6 +3,8 @@ const _ = require('lodash');
 
 function pieChartFactory() {
 
+  const dispatch = d3.dispatch('sliceClicked');
+
   const pieChart = function(selection) {
 
     const shadeColor2 = (color, percent) => {
@@ -29,6 +31,7 @@ function pieChartFactory() {
     const sliceBorderColour = (d) => shadeColor2(colour(d), 0.4);
     const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
     const key = (d) => d.data.label;
+
 
     selection.each(function(data) {
       const width = parseInt(d3.select(this).style('width'), 10);
@@ -197,6 +200,11 @@ function pieChartFactory() {
               .insert('path')
                 .attr('fill', (d) => colour(d.data.label))
                 .attr('class', 'slice')
+                .on('click', function(d) {
+                  console.log("Clicked!");
+                  console.log(dispatch);
+                  dispatch.sliceClicked(d);
+                })
                 .each(function(d) {
                   this._current = d;
                 });
@@ -224,7 +232,7 @@ function pieChartFactory() {
     });
   }
 
-  return pieChart;
+  return d3.rebind(pieChart, dispatch, 'on');
 }
 
 module.exports = pieChartFactory;

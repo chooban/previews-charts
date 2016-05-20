@@ -45,12 +45,29 @@ function drawDonutChart(data) {
   const toExtract = /(IMAGE|MARVEL|DC COMICS|DARK HORSE|IDW)/i;
   //var data = topResults(countByPublisher(data.contents), 10, ignore);
 
-  const filteredData = countByPublisher(data.contents)
-                          .filter((d) => d.label.match(toExtract) !== null);
+  let byPublisher = countByPublisher(data.contents);
+  let topTen = valueGreaterThan(byPublisher, 100, ignore);
 
-  var chart = d3.select('.chart')
-                  .datum(filteredData)
-                  .call(donutChart);
+  let others = _.differenceBy(byPublisher, topTen, _.property('label'));
+  let othersTotaled = others.reduce(
+    (acc, item) => { acc.value += item.value; return acc; },
+    { label: 'OTHERS', value: 0 }
+  );
+
+  topTen.push(othersTotaled);
+
+  d3.select('.chart')
+      .datum(topTen)
+      .call(donutChart);
+
+  donutChart.on('sliceClicked', function(d) {
+    console.log(d);
+  });
+
+  function valueGreaterThan(data, n, ignore) {
+    return data.filter((d) => !ignore.includes(d.label))
+               .filter((d) => d.value > n);
+  }
 
   function topResults(data, n, ignore = []) {
     const results = data.filter((d) => !ignore.includes(d.label))
@@ -74,15 +91,7 @@ function drawBarChart(data) {
 }
 
 function countByPublisher(previewsContents) {
-  return previewsContents.map(mapByPublisher)
-                          .reduce(countByKey, [])
-                          .sort(byValue);
-
-  function byValue(a, b) {
-    return b.value - a.value;
-  }
-
-  function countByKey(acc, item) {
+  const countByKey = (acc, item) => {
     const idx = acc.findIndex((e, idx) => e.label === item.label);
 
     if (idx > -1) {
@@ -97,10 +106,7 @@ function countByPublisher(previewsContents) {
     return acc;
   }
 
-  function mapByPublisher(lineItem) {
-    return {
-      label: lineItem.publisher,
-      value: 1
-    }
-  }
+  return previewsContents.map((d) => { return { label: d.publisher, value: 1}; })
+                         .reduce(countByKey, [])
+                         .sort((a, b) => b.value - a.value);
 }
