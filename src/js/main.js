@@ -41,7 +41,19 @@ function setup() {
 
 
 function drawDonutChart(data) {
-  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK SUPPLIES', 'UK ITEM', 'UK ITEMS', 'BOOKS', 'RPG'];
+  const ignore = [
+    'APPAREL',
+    'BOOKS',
+    'GAMES',
+    'MAGAZINES',
+    'MERCHANDISE',
+    'RPG',
+    'SUPPLIES',
+    'UK ITEM',
+    'UK ITEMS',
+    'UK SUPPLIES',
+    'UNKNOWN'
+  ];
   const toLabelAndValue = (objValue, key) => { return { label: key, value: objValue } }
 
   const byPublisher = _.chain(data.contents)
