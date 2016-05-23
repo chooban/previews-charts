@@ -3,7 +3,9 @@ const _ = require('lodash');
 
 function pieChartFactory() {
 
-  const dispatch = d3.dispatch('sliceClicked');
+  const dispatch = d3.dispatch('sliceClicked', 'back');
+
+  let showBackButton = false;
 
   const pieChart = function(selection) {
 
@@ -20,7 +22,6 @@ function pieChartFactory() {
 
     const midAngle = (d) => d.startAngle + (d.endAngle - d.startAngle) / 2;
     const key = (d) => d.data.label;
-
 
     selection.each(function(data) {
       const width = parseInt(d3.select(this).style('width'), 10);
@@ -66,17 +67,29 @@ function pieChartFactory() {
                 .attr('width', width)
                 .attr('height', height)
                   .append('g')
+                    .attr('class', 'container')
                     .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
 
       container.append('g').attr('class', 'slices');
       container.append('g').attr('class', 'labels');
       container.append('g').attr('class', 'lines');
       container.append('g').attr('class', 'values');
+      container.append('g').attr('class', 'backlink');
 
       addSlices(was, is, data);
       addValues(was, is, data);
       addTextLabels(was, is, data);
       addPolylines(was, is, data);
+
+      container.select('.backlink')
+          .append('text')
+          .attr('class', 'backlink')
+          .style('text-anchor', 'middle')
+          .on('click', () => dispatch.back())
+          .text('Back up');
+
+      svg.selectAll('text.backlink')
+          .style('visibility', () => showBackButton ? 'visible' : 'hidden');
 
       function addValues(was, is, data) {
         let text = svg.select('.values').selectAll('text').data(pie(was), key);
@@ -220,6 +233,13 @@ function pieChartFactory() {
         slice.exit().transition().delay(1000).duration(0).remove();
       }
     });
+  }
+
+  pieChart.showBack = function(value) {
+    if (!arguments.length) return showBackButton;
+
+    showBackButton = value;
+    return pieChart;
   }
 
   return d3.rebind(pieChart, dispatch, 'on');

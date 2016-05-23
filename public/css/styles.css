@@ -24,3 +24,7 @@ body {
 .chart text {
   pointer-events: none;
 }
+
+text.backlink {
+  pointer-events: visiblePainted;
+}

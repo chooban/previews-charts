@@ -56,32 +56,44 @@ function drawDonutChart(data) {
   ];
   const toLabelAndValue = (objValue, key) => { return { label: key, value: objValue } }
 
+  let history = [];
+
   const byPublisher = _.chain(data.contents)
     .filter((d) => !ignore.includes(d.publisher))
     .countBy(_.property('publisher'))
     .map(toLabelAndValue)
     .value();
 
+  const root = extractPublishers(byPublisher, 100);
+  history.push(root);
+
   d3.select('.chart')
-      .datum(extractPublishers(byPublisher, 100))
+      .datum(root)
       .call(donutChart);
 
   donutChart.on('sliceClicked', function(d) {
     if (d.childData && d.childData.length) {
+      history.push(d.childData);
       d3.select('.chart')
         .datum(d.childData)
-        .call(donutChart);
+        .call(donutChart.showBack(true));
     }
+  });
+
+  donutChart.on('back', function() {
+    // Current chart is the tail of the history
+    history.pop();
+
+    d3.select('.chart')
+      .datum(history[history.length - 1])
+      .call(donutChart.showBack(history.length > 1));
   });
 
   function extractPublishers(allPublishers, count) {
     const filter = (d) => (count <= 2) ? true : d.value >= count;
     const totalItems = (d) => _.reduce(d, (sum, n) => sum += n.value, 0);
 
-    let extracted = _.chain(allPublishers)
-      .filter(filter)
-      .map(countPublishedItems)
-      .value();
+    let extracted = _.filter(allPublishers, filter)
 
     let others = _.chain(allPublishers)
                     .differenceBy(extracted, _.property('label'))
@@ -92,6 +104,8 @@ function drawDonutChart(data) {
     while ((totalItems(extracted) < totalItems(others)) && extracted.length < 19) {
       extracted = extracted.concat(others.splice(0,1));
     }
+
+    extracted = _.map(extracted, countPublishedItems);
 
     if (totalItems(others) < 25) {
       extracted = extracted.concat(others);
