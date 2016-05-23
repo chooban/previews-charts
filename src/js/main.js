@@ -50,10 +50,8 @@ function drawDonutChart(data) {
     .map(toLabelAndValue)
     .value();
 
-  let topLevel = extractPublishers(byPublisher, 100);
-
   d3.select('.chart')
-      .datum(topLevel)
+      .datum(extractPublishers(byPublisher, 100))
       .call(donutChart);
 
   donutChart.on('sliceClicked', function(d) {
@@ -66,23 +64,39 @@ function drawDonutChart(data) {
 
   function extractPublishers(allPublishers, count) {
     const filter = (d) => (count <= 2) ? true : d.value >= count;
-    const extracted = _.chain(allPublishers)
+    const totalItems = (d) => _.reduce(d, (sum, n) => sum += n.value, 0);
+
+    let extracted = _.chain(allPublishers)
       .filter(filter)
       .map(countPublishedItems)
       .value();
 
-    const others = _.differenceBy(allPublishers, extracted, _.property('label'));
-    const othersTotaled = others.reduce((acc, item) => {
-      acc.value += item.value;
-      return acc;
-    },
-    { label: 'OTHERS', value: 0, childData: []});
+    let others = _.chain(allPublishers)
+                    .differenceBy(extracted, _.property('label'))
+                    .sortBy(_.property('value'))
+                    .reverse()
+                    .value();
 
-    if (others && others.length) {
-      othersTotaled.childData = extractPublishers(others, Math.ceil(count * (2/3)));
+    while ((totalItems(extracted) < totalItems(others)) && extracted.length < 19) {
+      extracted = extracted.concat(others.splice(0,1));
     }
 
-    extracted.push(othersTotaled);
+    if (totalItems(others) < 25) {
+      extracted = extracted.concat(others);
+      others = null;
+    }
+
+    if (others && others.length) {
+      const othersTotaled = others.reduce((acc, item) => {
+          acc.value += item.value;
+          return acc;
+        },
+        {label: 'OTHERS', value: 0, childData: []}
+      );
+      othersTotaled.childData = extractPublishers(others, Math.ceil(count * (2/3)));
+      extracted.push(othersTotaled);
+    }
+
     return extracted;
   }
 
