@@ -65,7 +65,7 @@ function drawDonutChart(data) {
   });
 
   function extractPublishers(allPublishers, count) {
-    const filter = (d) => (count > 1) ? d.value > count : true;
+    const filter = (d) => (count <= 2) ? true : d.value >= count;
     const extracted = _.chain(allPublishers)
       .filter(filter)
       .map(countPublishedItems)
@@ -79,7 +79,7 @@ function drawDonutChart(data) {
     { label: 'OTHERS', value: 0, childData: []});
 
     if (others && others.length) {
-      othersTotaled.childData = extractPublishers(others, Math.ceil(count/2));
+      othersTotaled.childData = extractPublishers(others, Math.ceil(count * (2/3)));
     }
 
     extracted.push(othersTotaled);

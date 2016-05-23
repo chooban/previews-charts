@@ -35,8 +35,12 @@ function pieChartFactory() {
       const is = mergeWithFirstEqualZero(currentData, data);
 
       const extractLabels = (arr) => arr.map((d) => d.label);
-      const colour = d3.scale.category10()
-                      .domain(_.union(extractLabels(was), extractLabels(is)));
+      const domain = _.chain(['OTHERS'])
+                      .union(extractLabels(was))
+                      .union(extractLabels(is))
+                      .value();
+
+      const colour = d3.scale.category20b().domain(domain);
 
       // This is the slice arc. It has width.
       const arc = d3.svg.arc()
