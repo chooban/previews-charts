@@ -50,22 +50,8 @@ function drawDonutChart(data) {
     .map(toLabelAndValue)
     .value();
 
-  let topLevel = _.chain(byPublisher)
-    .filter((d) => d.value > 100)
-    .map(countPublishedItems)
-    .value();
-
-  let others = _.differenceBy(byPublisher, topLevel, _.property('label'));
-  let othersTotaled = others.reduce(
-    (acc, item) => {
-      acc.value += item.value;
-      acc.childData.push(item);
-      return acc;
-    },
-    { label: 'OTHERS', value: 0, childData: [] }
-  );
-
-  topLevel.push(othersTotaled);
+  let { topLevel, others } = extractPublishers(byPublisher, (d) => d.value > 100);
+  topLevel.push(others);
 
   d3.select('.chart')
       .datum(topLevel)
@@ -78,6 +64,26 @@ function drawDonutChart(data) {
         .call(donutChart);
     }
   });
+
+  function extractPublishers(allPublishers, filter) {
+    const extracted = _.chain(allPublishers)
+      .filter(filter)
+      .map(countPublishedItems)
+      .value();
+
+    const others = _.differenceBy(allPublishers, extracted, _.property('label'));
+    const othersTotaled = others.reduce((acc, item) => {
+      acc.value += item.value;
+      acc.childData.push(item);
+      return acc;
+    },
+    { label: 'OTHERS', value: 0, childData: []});
+
+    return {
+      topLevel: extracted,
+      others: othersTotaled
+    }
+  }
 
   function countPublishedItems(entry) {
     const publisherItems = _.filter(data.contents, (d) => d.publisher === entry.label);
