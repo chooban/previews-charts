@@ -41,7 +41,7 @@ function setup() {
 
 
 function drawDonutChart(data) {
-  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS'];
+  const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK SUPPLIES', 'UK ITEM', 'UK ITEMS', 'BOOKS', 'RPG'];
   const toLabelAndValue = (objValue, key) => { return { label: key, value: objValue } }
 
   const byPublisher = _.chain(data.contents)
@@ -50,8 +50,7 @@ function drawDonutChart(data) {
     .map(toLabelAndValue)
     .value();
 
-  let { topLevel, others } = extractPublishers(byPublisher, (d) => d.value > 100);
-  topLevel.push(others);
+  let topLevel = extractPublishers(byPublisher, 100);
 
   d3.select('.chart')
       .datum(topLevel)
@@ -65,7 +64,8 @@ function drawDonutChart(data) {
     }
   });
 
-  function extractPublishers(allPublishers, filter) {
+  function extractPublishers(allPublishers, count) {
+    const filter = (d) => (count > 1) ? d.value > count : true;
     const extracted = _.chain(allPublishers)
       .filter(filter)
       .map(countPublishedItems)
@@ -74,15 +74,16 @@ function drawDonutChart(data) {
     const others = _.differenceBy(allPublishers, extracted, _.property('label'));
     const othersTotaled = others.reduce((acc, item) => {
       acc.value += item.value;
-      acc.childData.push(item);
       return acc;
     },
     { label: 'OTHERS', value: 0, childData: []});
 
-    return {
-      topLevel: extracted,
-      others: othersTotaled
+    if (others && others.length) {
+      othersTotaled.childData = extractPublishers(others, Math.ceil(count/2));
     }
+
+    extracted.push(othersTotaled);
+    return extracted;
   }
 
   function countPublishedItems(entry) {
