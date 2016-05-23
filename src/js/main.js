@@ -42,13 +42,18 @@ function setup() {
 
 function drawDonutChart(data) {
   const ignore = ['MERCHANDISE', 'APPAREL', 'SUPPLIES', 'UK ITEMS', 'BOOKS'];
-  const countByPublisher = (data) => _.countBy(data, _.property('publisher'));
-  const mapToLabelAndValue = (objValue, key) => { return { label: key, value: objValue } }
+  const toLabelAndValue = (objValue, key) => { return { label: key, value: objValue } }
 
-  const byPublisher = _.map(countByPublisher(data.contents), mapToLabelAndValue);
-  let topLevel = valueGreaterThan(byPublisher, 100, ignore);
+  const byPublisher = _.chain(data.contents)
+    .filter((d) => !ignore.includes(d.publisher))
+    .countBy(_.property('publisher'))
+    .map(toLabelAndValue)
+    .value();
 
-  topLevel = _.map(topLevel, countPublishedItems);
+  let topLevel = _.chain(byPublisher)
+    .filter((d) => d.value > 100)
+    .map(countPublishedItems)
+    .value();
 
   let others = _.differenceBy(byPublisher, topLevel, _.property('label'));
   let othersTotaled = others.reduce(
@@ -94,11 +99,6 @@ function drawDonutChart(data) {
       }
     ];
     return entry;
-  }
-
-  function valueGreaterThan(data, n, ignore) {
-    return data.filter((d) => !ignore.includes(d.label))
-               .filter((d) => d.value > n);
   }
 
 }
