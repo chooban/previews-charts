@@ -23,6 +23,7 @@ body {
 
 .chart text {
   pointer-events: none;
+  cursor: pointer;
 }
 
 text.backlink {
