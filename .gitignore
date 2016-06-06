@@ -1,6 +1,8 @@
 node_modules/
 public/js/main.js
 public/js/main.js.map
+public/js/d3fc.js
+public/js/d3fc.js.map
 public/js/vendor.min.js
 *.map
 npm-debug.log

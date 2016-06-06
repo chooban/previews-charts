@@ -22,6 +22,50 @@ function setup() {
 
   gigsByMonth(root.append('svg'), svgAttrs);
   popularArtists(root.append('svg'), svgAttrs);
+  gigsByYear(root.append('svg'), gigsByArtist, svgAttrs);
+}
+
+function gigsByYear(selection, data, config) {
+  const gigs = _.chain(data)
+                  .map((artist) => artist.gigs)
+                  .flattenDeep()
+                  .map((gig) => gig.date.substring(0, 4))
+                  .countBy()
+                  .mapValues((v,k) => {
+                    return {
+                      'year': k,
+                      'count': v
+                    }
+                  })
+                  .values()
+                  .value();
+
+  const yExtent = fc.util.extent()
+    .fields(['count']);
+
+  const chart = fc.chart.cartesian(d3.scale.ordinal(), d3.scale.linear())
+    .chartLabel('Gigs By Year')
+    .xDomain(_.map(gigs, y => y.year))
+    .yDomain(yExtent(gigs))
+    .yTicks(5)
+    .yNice();
+
+  const series = fc.series.bar()
+    .xValue((d) => d.year)
+    .yValue((d) => d.count);
+
+  chart.plotArea(series);
+
+  selection.attr({
+    width: 1000,
+    height: config.height
+  });
+
+  debugger
+
+  selection
+    .datum(gigs)
+    .call(chart);
 }
 
 function popularArtists(selection, config) {
@@ -142,6 +186,4 @@ function gigsByMonth(selection, config) {
   selection
     .datum(gigsByMonth)
     .call(chart);
-
-
 }
