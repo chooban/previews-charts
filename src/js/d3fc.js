@@ -12,20 +12,19 @@ const gigsByArtist = require('./gig-data.json');
 $('.content').ready(setup);
 
 function setup() {
-  const width = 500;
-  const height = 250;
   const svgAttrs = {
-    'width': width,
-    'height': height
+    'width': 500,
+    'height': 250,
+    'padding': 30
   };
 
   const root = d3.select('.content').html('')
 
-  gigsByMonth(root.append('svg').attr(svgAttrs));
-  popularArtists(root.append('svg').attr(svgAttrs));
+  gigsByMonth(root.append('svg'), svgAttrs);
+  popularArtists(root.append('svg'), svgAttrs);
 }
 
-function popularArtists(selection) {
+function popularArtists(selection, config) {
   const gigs = _.chain(gigsByArtist)
                         .mapValues((v, k) => {
                           return {
@@ -39,11 +38,16 @@ function popularArtists(selection) {
 
   const xScale = d3.scale.ordinal()
     .domain(_.map(gigs, (d) => d.artist))
-    .rangePoints([0, 500], 1);
+    .rangePoints([0, config.width - config.padding], 1);
 
   const yScale = d3.scale.linear()
-    .domain([0, 10])
-    .range([250, 0]);
+    .domain([0, d3.max(gigs, (d) => d.count)])
+    .range([config.height - config.padding, config.padding]);
+
+  const yAxis = fc.svg.axis()
+    .scale(yScale)
+    .tickValues([2,4,6,8,10])
+    .orient('right')
 
   const series = fc.series.bar()
     .xValue((d) => d.artist)
@@ -51,12 +55,20 @@ function popularArtists(selection) {
     .xScale(xScale)
     .yScale(yScale);
 
+  selection.attr({
+    width: config.width,
+    height: config.height
+  });
+
   selection
     .datum(gigs)
     .call(series);
+
+  selection.append('g').call(yAxis)
+    .attr('transform', 'translate(' + (config.width - config.padding) + ', 0)')
 }
 
-function gigsByMonth(selection) {
+function gigsByMonth(selection, config) {
   const gigsByMonth = _.chain(gigsByArtist)
                         .map((artist) => artist.gigs)
                         .flattenDeep()
@@ -94,6 +106,11 @@ function gigsByMonth(selection) {
     .yValue((d) => d.count);
 
   chart.plotArea(series);
+
+  selection.attr({
+    width: config.width,
+    height: config.height
+  });
 
   selection
     .datum(gigsByMonth)
