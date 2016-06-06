@@ -14,7 +14,7 @@ $('.content').ready(setup);
 function setup() {
   const svgAttrs = {
     'width': 500,
-    'height': 250,
+    'height': 300,
     'padding': 30
   };
 
@@ -33,27 +33,49 @@ function popularArtists(selection, config) {
                           };
                         })
                         .values()
-                        .filter((artist) => artist.count > 2)
+                        .filter((artist) => artist.count >= 2)
                         .value();
 
   const xScale = d3.scale.ordinal()
     .domain(_.map(gigs, (d) => d.artist))
-    .rangePoints([0, config.width - config.padding], 1);
+    .rangePoints([config.padding, config.width - config.padding], 1);
+
+  const xAxis = fc.svg.axis()
+    .scale(xScale)
+    .orient('bottom')
+    .decorate((s) => {
+      s.enter().select('text')
+        .style('text-anchor', 'end')
+        .attr('transform', 'rotate(-65 10 10)')
+    })
+
+  const xAxisNode = selection.append('g')
+    .classed('xaxis', true)
+    .call(xAxis)
+
+  const xAxisHeight = Math.ceil(xAxisNode.node().getBBox().height);
+
+  xAxisNode.attr('transform', 'translate(0, ' + (config.height - xAxisHeight) + ')')
 
   const yScale = d3.scale.linear()
-    .domain([0, d3.max(gigs, (d) => d.count)])
-    .range([config.height - config.padding, config.padding]);
+    .domain([0, d3.max(gigs, (d) => d.count) + 2])
+    .range([config.height - xAxisHeight, config.padding]);
 
   const yAxis = fc.svg.axis()
     .scale(yScale)
-    .tickValues([2,4,6,8,10])
+    .tickValues([2,4,6,8,10,12])
     .orient('right')
 
   const series = fc.series.bar()
     .xValue((d) => d.artist)
     .yValue((d) => d.count)
     .xScale(xScale)
-    .yScale(yScale);
+    .yScale(yScale)
+    .decorate((s) => {
+      s.select('path')
+        .append('title')
+          .text((d) => d.artist + ' (' + d.count + ')')
+    })
 
   selection.attr({
     width: config.width,
@@ -61,11 +83,16 @@ function popularArtists(selection, config) {
   });
 
   selection
+    .append('g')
+    .classed('bars', true)
     .datum(gigs)
     .call(series);
 
-  selection.append('g').call(yAxis)
+  selection.append('g')
+    .classed('yaxis', true)
+    .call(yAxis)
     .attr('transform', 'translate(' + (config.width - config.padding) + ', 0)')
+
 }
 
 function gigsByMonth(selection, config) {
