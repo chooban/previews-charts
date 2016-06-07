@@ -20,8 +20,8 @@ function setup() {
 
   const root = d3.select('.content').html('')
 
-  gigsByMonth(root.append('svg'), svgAttrs);
-  popularArtists(root.append('svg'), svgAttrs);
+  //gigsByMonth(root.append('svg'), svgAttrs);
+  //popularArtists(root.append('svg'), svgAttrs);
   gigsByYear(root.append('svg'), gigsByArtist, svgAttrs);
 }
 
@@ -41,7 +41,9 @@ function gigsByYear(selection, data, config) {
                   .value();
 
   const yExtent = fc.util.extent()
-    .fields(['count']);
+    .fields(['count'])
+    .include([0])
+    .pad([0, 0.2]);
 
   const chart = fc.chart.cartesian(d3.scale.ordinal(), d3.scale.linear())
     .chartLabel('Gigs By Year')
@@ -52,7 +54,46 @@ function gigsByYear(selection, data, config) {
 
   const series = fc.series.bar()
     .xValue((d) => d.year)
-    .yValue((d) => d.count);
+    .yValue((d) => d.count)
+    .decorate((s) => {
+      s.enter().select('path')
+        .on('click', function(d) {
+          const gigsByYear = _.chain(data)
+            .map((artist) => artist.gigs)
+            .flattenDeep()
+            .filter((gig) => gig.date.substring(0, 4) === '' + d.year)
+            .map((gig) => {
+              const gigDate = new Date(gig.date);
+              return {
+                'month': months[gigDate.getMonth()]
+              };
+            })
+            .countBy(_.property('month'))
+            .mapValues((v, k) => {
+              return {
+                'month': k,
+                'count': v
+              };
+            })
+            .values()
+            .value();
+
+          series.xValue((d) => d.month);
+
+          chart
+            .chartLabel("Gigs By Month For " + d.year)
+            .xDomain(months)
+            .yDomain(yExtent(gigsByYear));
+
+          chart.plotArea(series);
+
+          selection
+            .datum(gigsByYear)
+            .transition()
+            .duration(1500)
+            .call(chart);
+        })
+    });
 
   chart.plotArea(series);
 
@@ -60,8 +101,6 @@ function gigsByYear(selection, data, config) {
     width: 1000,
     height: config.height
   });
-
-  debugger
 
   selection
     .datum(gigs)
