@@ -1,0 +1,1535 @@
+{
+  "Meursault": {
+    "echonestId": "ARRXGGS1187FB5C23E",
+    "genres": [
+      "scottish rock"
+    ],
+    "gigs": [
+      {
+        "date": "2011-03-09T19:30:00.000Z"
+      },
+      {
+        "date": "2008-12-05T00:00:00.000Z"
+      },
+      {
+        "date": "2010-05-20T23:00:00.000Z"
+      }
+    ]
+  },
+  "Gogol Bordello": {
+    "echonestId": "AR0YME61187FB3B544",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2011-03-14T19:00:00.000Z"
+      }
+    ]
+  },
+  "Andrew Jackson Jihad": {
+    "echonestId": "ARFUZN61187FB4CBA9",
+    "genres": [
+      "folk punk",
+      "anti-folk",
+      "folk christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2011-05-27T18:30:00.000Z"
+      },
+      {
+        "date": "2014-10-03T18:30:00.000Z"
+      },
+      {
+        "date": "2010-10-04T23:00:00.000Z"
+      },
+      {
+        "date": "2015-06-14T18:00:00.000Z"
+      }
+    ]
+  },
+  "Cake": {
+    "echonestId": "ARQRQRA12131B4B5A8",
+    "genres": [
+      "alternative rock",
+      "pop rock",
+      "post-grunge",
+      "funk metal",
+      "funk rock",
+      "garage rock",
+      "rap rock",
+      "neo mellow"
+    ],
+    "gigs": [
+      {
+        "date": "2011-11-16T19:30:00.000Z"
+      }
+    ]
+  },
+  "Franz Nicolay": {
+    "echonestId": "ARILYKD1187B9B6760",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2011-12-06T00:00:00.000Z"
+      },
+      {
+        "date": "2013-11-20T00:00:00.000Z"
+      },
+      {
+        "date": "2011-01-14T20:00:00.000Z"
+      }
+    ]
+  },
+  "Sparks": {
+    "echonestId": "AR040JZ1187FB399A9",
+    "genres": [
+      "zolo",
+      "glam rock",
+      "art rock",
+      "new wave",
+      "dance rock",
+      "protopunk",
+      "new romantic",
+      "experimental",
+      "new wave pop"
+    ],
+    "gigs": [
+      {
+        "date": "2012-10-20T23:00:00.000Z"
+      }
+    ]
+  },
+  "Lucero": {
+    "echonestId": "ARBW1J61187B9B8B54",
+    "genres": [
+      "alternative country",
+      "cowpunk",
+      "roots rock"
+    ],
+    "gigs": [
+      {
+        "date": "2012-11-24T00:00:00.000Z"
+      },
+      {
+        "date": "2016-02-05T19:30:00.000Z"
+      }
+    ]
+  },
+  "Colin Hay": {
+    "echonestId": "AR9QONM1187B9A0A8C",
+    "genres": [
+      "neo mellow",
+      "acoustic pop",
+      "singer-songwriter",
+      "pop rock"
+    ],
+    "gigs": [
+      {
+        "date": "2013-05-03T18:00:00.000Z"
+      },
+      {
+        "date": "2009-11-13T00:00:00.000Z"
+      }
+    ]
+  },
+  "Dave Hause ": {
+    "echonestId": "ARNYVOR12086C121CB",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2013-11-15T20:00:00.000Z"
+      }
+    ]
+  },
+  "Trampled By Turtles": {
+    "echonestId": "ARONNX51187B98DD47",
+    "genres": [
+      "progressive bluegrass",
+      "new americana",
+      "bluegrass"
+    ],
+    "gigs": [
+      {
+        "date": "2014-01-25T19:30:00.000Z"
+      },
+      {
+        "date": "2014-11-18T19:30:00.000Z"
+      }
+    ]
+  },
+  "Lindi Ortega": {
+    "echonestId": "ARVVSPP11EBCD78BA3",
+    "genres": [
+      "ectofolk",
+      "alternative country",
+      "folk christmas",
+      "country christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2014-01-16T20:00:00.000Z"
+      }
+    ]
+  },
+  "Iron Chic": {
+    "echonestId": "ARZBFIT12086C16B0D",
+    "genres": [
+      "orgcore",
+      "alternative emo"
+    ],
+    "gigs": [
+      {
+        "date": "2014-05-06T19:00:00.000Z"
+      },
+      {
+        "date": "2011-05-14T18:30:00.000Z"
+      }
+    ]
+  },
+  "Old Crow Medicine Show": {
+    "echonestId": "ARYO9H11187FB57945",
+    "genres": [
+      "new americana",
+      "folk",
+      "progressive bluegrass",
+      "old-time",
+      "bluegrass",
+      "alternative country",
+      "traditional folk"
+    ],
+    "gigs": [
+      {
+        "date": "2014-10-22T18:30:00.000Z"
+      }
+    ]
+  },
+  "Wheatus": {
+    "echonestId": "AR07KSC1187B9BA606",
+    "genres": [
+      "pop rock",
+      "post-grunge",
+      "pop punk",
+      "alternative rock"
+    ],
+    "gigs": [
+      {
+        "date": "2014-10-19T18:30:00.000Z"
+      },
+      {
+        "date": "2008-10-23T23:00:00.000Z"
+      },
+      {
+        "date": "2011-10-14T23:00:00.000Z"
+      },
+      {
+        "date": "2010-06-11T23:00:00.000Z"
+      },
+      {
+        "date": "2012-05-28T18:30:00.000Z"
+      },
+      {
+        "date": "2001-11-19T00:00:00.000Z"
+      }
+    ]
+  },
+  "Tim Barry": {
+    "echonestId": "ARN21XK1187B995CC1",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-02-27T19:30:00.000Z"
+      },
+      {
+        "date": "2013-06-28T18:00:00.000Z"
+      }
+    ]
+  },
+  "Laibach": {
+    "echonestId": "AR0OXS51187FB4F85A",
+    "genres": [
+      "industrial",
+      "industrial rock",
+      "ebm",
+      "electro-industrial",
+      "martial industrial",
+      "experimental",
+      "industrial metal"
+    ],
+    "gigs": [
+      {
+        "date": "2015-03-31T18:30:00.000Z"
+      },
+      {
+        "date": "2010-12-16T00:00:00.000Z"
+      }
+    ]
+  },
+  "Yo La Tengo": {
+    "echonestId": "ARUG48S1187B9BA142",
+    "genres": [
+      "lo-fi",
+      "indie rock",
+      "noise pop",
+      "slow core",
+      "alternative rock",
+      "dream pop",
+      "neo-psychedelic",
+      "space rock",
+      "nu gaze",
+      "permanent wave",
+      "chamber pop",
+      "indie pop",
+      "experimental rock",
+      "indie folk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-10-16T18:30:00.000Z"
+      },
+      {
+        "date": "2009-11-06T00:00:00.000Z"
+      },
+      {
+        "date": "2013-03-22T19:00:00.000Z"
+      },
+      {
+        "date": "2011-06-05T23:00:00.000Z"
+      }
+    ]
+  },
+  "Wilhelm Scream": {
+    "echonestId": "ARIRCKD13B71CE69A3",
+    "genres": [],
+    "gigs": [
+      {
+        "date": "2015-08-19T18:00:00.000Z"
+      }
+    ]
+  },
+  "Teenage Bottlerocket": {
+    "echonestId": "ARE5LT91187B9B04DE",
+    "genres": [
+      "power-pop punk",
+      "melodic hardcore",
+      "orgcore",
+      "skate punk",
+      "punk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-08-21T18:00:00.000Z"
+      }
+    ]
+  },
+  "Steve Earle": {
+    "echonestId": "ARRX7Z01187B9AC449",
+    "genres": [
+      "alternative country",
+      "folk",
+      "cowpunk",
+      "country rock",
+      "roots rock",
+      "outlaw country",
+      "texas country",
+      "alternative roots rock",
+      "traditional folk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-10-27T19:00:00.000Z"
+      }
+    ]
+  },
+  "Hayes Carll": {
+    "echonestId": "ARTMZYW1187B9A7ECB",
+    "genres": [
+      "outlaw country",
+      "texas country",
+      "alternative country",
+      "cowpunk",
+      "folk",
+      "folk christmas",
+      "country christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2015-09-06T18:30:00.000Z"
+      }
+    ]
+  },
+  "Titus Andronicus": {
+    "echonestId": "ARBFY7A119B8669827",
+    "genres": [
+      "noise pop",
+      "lo-fi",
+      "noise rock",
+      "indie rock",
+      "nu gaze",
+      "neo-psychedelic",
+      "indie pop"
+    ],
+    "gigs": [
+      {
+        "date": "2015-11-13T19:00:00.000Z"
+      }
+    ]
+  },
+  "Kris Drever": {
+    "echonestId": "AR4SEOV1187FB5476F",
+    "genres": [
+      "british folk",
+      "traditional british folk"
+    ],
+    "gigs": [
+      {
+        "date": "2016-05-14T18:30:00.000Z"
+      }
+    ]
+  },
+  "Muncie Girls": {
+    "echonestId": "ARDDMRR138BEC188F8",
+    "genres": [],
+    "gigs": [
+      {
+        "date": "2016-03-30T18:00:00.000Z"
+      }
+    ]
+  },
+  "Drive-By Truckers": {
+    "echonestId": "AROMCEV1187B9B3F58",
+    "genres": [
+      "alternative country",
+      "cowpunk",
+      "roots rock",
+      "country rock",
+      "folk",
+      "new americana",
+      "outlaw country",
+      "southern rock"
+    ],
+    "gigs": [
+      {
+        "date": "2008-08-06T18:00:00.000Z"
+      },
+      {
+        "date": "2014-05-11T18:30:00.000Z"
+      },
+      {
+        "date": "2003-12-02T21:30:00.000Z"
+      },
+      {
+        "date": "2011-05-09T18:00:00.000Z"
+      },
+      {
+        "date": "2010-11-10T00:00:00.000Z"
+      }
+    ]
+  },
+  "Tom Waits": {
+    "echonestId": "ARERLPG1187FB3BB39",
+    "genres": [
+      "singer-songwriter"
+    ],
+    "gigs": [
+      {
+        "date": "2008-07-26T23:00:00.000Z"
+      }
+    ]
+  },
+  "Arrogant Worms": {
+    "echonestId": "ARR96K01187B98D520",
+    "genres": [
+      "comic",
+      "geek rock"
+    ],
+    "gigs": [
+      {
+        "date": "2006-05-24T19:00:00.000Z"
+      }
+    ]
+  },
+  "Clorox Girls": {
+    "echonestId": "AR14BJQ1187B9ACC2E",
+    "genres": [
+      "garage punk"
+    ],
+    "gigs": [
+      {
+        "date": "2006-06-29T23:00:00.000Z"
+      }
+    ]
+  },
+  "Tom Paxton": {
+    "echonestId": "AR2JSO31187FB5405E",
+    "genres": [
+      "traditional folk",
+      "folk",
+      "folk christmas",
+      "folk rock",
+      "british folk",
+      "singer-songwriter"
+    ],
+    "gigs": [
+      {
+        "date": "2008-01-21T00:00:00.000Z"
+      },
+      {
+        "date": "2009-02-17T00:00:00.000Z"
+      },
+      {
+        "date": "2005-02-24T00:00:00.000Z"
+      }
+    ]
+  },
+  "Hold Steady": {
+    "echonestId": "AREFFQF1187FB3F845",
+    "genres": [
+      "indie rock",
+      "lo-fi"
+    ],
+    "gigs": [
+      {
+        "date": "2008-02-25T00:00:00.000Z"
+      }
+    ]
+  },
+  "Kimya Dawson": {
+    "echonestId": "ARN3PMH1187FB3C8AA",
+    "genres": [
+      "anti-folk",
+      "folk punk",
+      "indie folk"
+    ],
+    "gigs": [
+      {
+        "date": "2008-05-13T18:00:00.000Z"
+      }
+    ]
+  },
+  "Hot Leg": {
+    "echonestId": "ARDQ77S11C8A415CB4",
+    "genres": [
+      "sleaze rock",
+      "deep melodic hard rock",
+      "glam rock",
+      "glam metal",
+      "hard rock",
+      "rock"
+    ],
+    "gigs": [
+      {
+        "date": "2009-03-05T00:00:00.000Z"
+      }
+    ]
+  },
+  "Lau": {
+    "echonestId": "ARXRHWZ1187FB4ED8B",
+    "genres": [
+      "british folk",
+      "traditional british folk"
+    ],
+    "gigs": [
+      {
+        "date": "2009-03-19T00:00:00.000Z"
+      },
+      {
+        "date": "2009-12-05T00:00:00.000Z"
+      },
+      {
+        "date": "2015-11-28T19:00:00.000Z"
+      },
+      {
+        "date": "2016-01-28T19:30:00.000Z"
+      },
+      {
+        "date": "2013-11-28T00:00:00.000Z"
+      },
+      {
+        "date": "2010-08-19T23:00:00.000Z"
+      },
+      {
+        "date": "2010-11-24T00:00:00.000Z"
+      },
+      {
+        "date": "2012-11-06T00:00:00.000Z"
+      },
+      {
+        "date": "2012-02-04T19:00:00.000Z"
+      },
+      {
+        "date": "2011-12-02T19:00:00.000Z"
+      }
+    ]
+  },
+  "Bruce Springsteen": {
+    "echonestId": "AR91C8S1187B990901",
+    "genres": [
+      "singer-songwriter",
+      "roots rock",
+      "folk rock",
+      "folk",
+      "mellow gold",
+      "country rock",
+      "traditional folk",
+      "permanent wave",
+      "folk-pop",
+      "rock",
+      "pop christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2009-07-13T23:00:00.000Z"
+      },
+      {
+        "date": "2016-06-01T17:30:00.000Z"
+      }
+    ]
+  },
+  "Frank Turner": {
+    "echonestId": "ARVVUSC1187FB4BDAC",
+    "genres": [
+      "indie folk"
+    ],
+    "gigs": [
+      {
+        "date": "2009-10-14T23:00:00.000Z"
+      },
+      {
+        "date": "2010-03-16T00:00:00.000Z"
+      },
+      {
+        "date": "2010-12-02T00:00:00.000Z"
+      },
+      {
+        "date": "2011-05-11T18:00:00.000Z"
+      },
+      {
+        "date": "2011-11-25T19:30:00.000Z"
+      },
+      {
+        "date": "2014-02-08T19:00:00.000Z"
+      },
+      {
+        "date": "2012-11-18T00:00:00.000Z"
+      }
+    ]
+  },
+  "Jonathan Coulton": {
+    "echonestId": "ARXSNCN1187B9B06A3",
+    "genres": [
+      "comic"
+    ],
+    "gigs": [
+      {
+        "date": "2009-11-08T00:00:00.000Z"
+      },
+      {
+        "date": "2009-11-10T00:00:00.000Z"
+      }
+    ]
+  },
+  "Bad Religion": {
+    "echonestId": "AR46CAD1187FB4D84B",
+    "genres": [
+      "punk",
+      "skate punk",
+      "hardcore punk",
+      "melodic hardcore",
+      "punk christmas",
+      "pop punk"
+    ],
+    "gigs": [
+      {
+        "date": "2010-08-24T23:00:00.000Z"
+      },
+      {
+        "date": "2011-07-11T23:00:00.000Z"
+      },
+      {
+        "date": "2002-05-11T23:00:00.000Z"
+      }
+    ]
+  },
+  "Cat Empire": {
+    "echonestId": "ARQNLH31187B9ADC1D",
+    "genres": [
+      "australian alternative rock"
+    ],
+    "gigs": [
+      {
+        "date": "2010-10-26T23:00:00.000Z"
+      },
+      {
+        "date": "2011-10-25T23:00:00.000Z"
+      },
+      {
+        "date": "2016-04-09T18:00:00.000Z"
+      }
+    ]
+  },
+  "Bomb The Music Industry": {
+    "echonestId": "ARGOGOZ1187B9AEAC6",
+    "genres": [
+      "ska punk",
+      "folk punk",
+      "ska"
+    ],
+    "gigs": [
+      {
+        "date": "2010-11-12T00:00:00.000Z"
+      }
+    ]
+  },
+  "The Riot Before": {
+    "echonestId": "AR4F8941187FB564F2",
+    "genres": [
+      "rva indie",
+      "orgcore",
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2010-11-21T20:00:00.000Z"
+      }
+    ]
+  },
+  "Gaslight Anthem": {
+    "echonestId": "ARBVLCJ1187FB50E61",
+    "genres": [
+      "alternative emo"
+    ],
+    "gigs": [
+      {
+        "date": "2010-11-19T00:00:00.000Z"
+      },
+      {
+        "date": "2010-06-22T23:00:00.000Z"
+      }
+    ]
+  },
+  "Cheap Girls": {
+    "echonestId": "ARRHTEX12086C11179",
+    "genres": [
+      "orgcore",
+      "alternative emo"
+    ],
+    "gigs": [
+      {
+        "date": "2011-08-09T19:00:00.000Z"
+      }
+    ]
+  },
+  "Flogging Molly": {
+    "echonestId": "ARP6IJB1187B9B14DE",
+    "genres": [
+      "celtic rock",
+      "folk punk",
+      "bow pop",
+      "celtic punk"
+    ],
+    "gigs": [
+      {
+        "date": "2011-08-24T23:00:00.000Z"
+      }
+    ]
+  },
+  "Henry Rollins": {
+    "echonestId": "AR6QPPU1187B9AA726",
+    "genres": [
+      "hardcore punk",
+      "punk",
+      "comic",
+      "funk metal",
+      "post-hardcore",
+      "funk rock",
+      "alternative metal"
+    ],
+    "gigs": [
+      {
+        "date": "2012-01-14T00:00:00.000Z"
+      },
+      {
+        "date": "2010-08-22T23:00:00.000Z"
+      },
+      {
+        "date": "2016-01-18T19:00:00.000Z"
+      }
+    ]
+  },
+  "Babybird": {
+    "echonestId": "ARX3Z311187B994B5B",
+    "genres": [
+      "britpop",
+      "madchester"
+    ],
+    "gigs": [
+      {
+        "date": "2012-01-31T19:00:00.000Z"
+      },
+      {
+        "date": "2010-03-18T00:00:00.000Z"
+      }
+    ]
+  },
+  "The Menzingers": {
+    "echonestId": "ARB7DJV1187FB42B79",
+    "genres": [
+      "orgcore",
+      "alternative emo",
+      "folk punk",
+      "melodic hardcore"
+    ],
+    "gigs": [
+      {
+        "date": "2012-09-21T18:30:00.000Z"
+      },
+      {
+        "date": "2013-08-07T18:30:00.000Z"
+      },
+      {
+        "date": "2014-10-01T17:30:00.000Z"
+      }
+    ]
+  },
+  "Joyce Manor": {
+    "echonestId": "ARKYVKE12D332C2586",
+    "genres": [
+      "alternative emo",
+      "folk punk",
+      "orgcore"
+    ],
+    "gigs": [
+      {
+        "date": "2012-09-26T18:30:00.000Z"
+      },
+      {
+        "date": "2014-11-12T19:30:00.000Z"
+      }
+    ]
+  },
+  "The Cut Ups ": {
+    "echonestId": "ARSYHOW12454A51B6E",
+    "genres": [
+      "deep orgcore"
+    ],
+    "gigs": [
+      {
+        "date": "2013-08-01T19:00:00.000Z"
+      }
+    ]
+  },
+  "Lau ": {
+    "echonestId": "ARXRHWZ1187FB4ED8B",
+    "genres": [
+      "british folk",
+      "traditional british folk"
+    ],
+    "gigs": [
+      {
+        "date": "2014-11-27T19:30:00.000Z"
+      }
+    ]
+  },
+  "Masked Intruder": {
+    "echonestId": "ARGBTHB136658E98A5",
+    "genres": [
+      "power-pop punk",
+      "orgcore",
+      "punk christmas",
+      "deep power-pop punk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-05-14T18:30:00.000Z"
+      }
+    ]
+  },
+  "Red City Radio": {
+    "echonestId": "ARYDXLV11EB9C82776",
+    "genres": [
+      "orgcore",
+      "deep power-pop punk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-07-16T18:30:00.000Z"
+      }
+    ]
+  },
+  "Barenaked Ladies": {
+    "echonestId": "ARW7K0P1187B9B5B47",
+    "genres": [
+      "pop rock",
+      "post-grunge",
+      "neo mellow",
+      "pop christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2015-10-03T18:00:00.000Z"
+      }
+    ]
+  },
+  "Bouncing Souls": {
+    "echonestId": "ARUU13E1187FB3EB48",
+    "genres": [
+      "melodic hardcore",
+      "skate punk",
+      "punk",
+      "ska punk",
+      "pop punk"
+    ],
+    "gigs": [
+      {
+        "date": "2013-03-17T19:00:00.000Z"
+      }
+    ]
+  },
+  "Chuck Ragan": {
+    "echonestId": "ARP8KLI1187B99BE6F",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2015-03-21T20:30:00.000Z"
+      },
+      {
+        "date": "2015-03-22T19:00:00.000Z"
+      }
+    ]
+  },
+  "Nick Harper": {
+    "echonestId": "ARVB9E41187B994C07",
+    "genres": [
+      "british folk"
+    ],
+    "gigs": [
+      {
+        "date": "2012-03-10T00:00:00.000Z"
+      },
+      {
+        "date": "2004-04-16T20:30:00.000Z"
+      },
+      {
+        "date": "2007-05-17T23:00:00.000Z"
+      },
+      {
+        "date": "2010-05-12T23:00:00.000Z"
+      },
+      {
+        "date": "2005-11-17T00:00:00.000Z"
+      }
+    ]
+  },
+  "The Streets": {
+    "echonestId": "ARIHE7O1187FB47DED",
+    "genres": [
+      "uk garage"
+    ],
+    "gigs": [
+      {
+        "date": "2011-02-18T00:00:00.000Z"
+      }
+    ]
+  },
+  "Low": {
+    "echonestId": "ARBZ19X1187B9ABB24",
+    "genres": [
+      "slow core",
+      "melancholia",
+      "indie christmas",
+      "dream pop",
+      "chamber pop",
+      "lo-fi",
+      "folk christmas",
+      "indie rock",
+      "indie folk",
+      "pop christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2011-05-17T18:30:00.000Z"
+      }
+    ]
+  },
+  "Dave Matthews Band": {
+    "echonestId": "ARQXC7V1187FB4DA9E",
+    "genres": [
+      "jam band",
+      "neo mellow",
+      "pop rock",
+      "pop christmas",
+      "post-grunge"
+    ],
+    "gigs": [
+      {
+        "date": "2015-11-11T19:30:00.000Z"
+      }
+    ]
+  },
+  "The Queers": {
+    "echonestId": "ARIEKZA1187B98FED4",
+    "genres": [
+      "power-pop punk",
+      "skate punk",
+      "punk"
+    ],
+    "gigs": [
+      {
+        "date": "2011-03-06T15:00:00.000Z"
+      }
+    ]
+  },
+  "Laura Stevenson": {
+    "echonestId": "ARINEHN11EBCD78F29",
+    "genres": [
+      "folk punk"
+    ],
+    "gigs": [
+      {
+        "date": "2014-04-17T18:00:00.000Z"
+      },
+      {
+        "date": "2016-06-04T18:30:00.000Z"
+      },
+      {
+        "date": "2014-12-09T19:30:00.000Z"
+      },
+      {
+        "date": "2014-12-10T19:00:00.000Z"
+      }
+    ]
+  },
+  "Paradise Lost": {
+    "echonestId": "ARF97QT1187B9B8B47",
+    "genres": [
+      "doom metal",
+      "gothic metal",
+      "metal"
+    ],
+    "gigs": [
+      {
+        "date": "2015-10-01T18:00:00.000Z"
+      }
+    ]
+  },
+  "Laura Veirs": {
+    "echonestId": "ARXUCWV1187FB3E4D7",
+    "genres": [
+      "indie folk",
+      "folk-pop",
+      "freak folk",
+      "chamber pop",
+      "stomp and holler",
+      "anti-folk",
+      "new weird america",
+      "slow core",
+      "lilith"
+    ],
+    "gigs": [
+      {
+        "date": "2004-03-27T21:30:00.000Z"
+      },
+      {
+        "date": "2008-01-30T00:00:00.000Z"
+      }
+    ]
+  },
+  "Abigail Washburn": {
+    "echonestId": "ARBIR151187FB5524D",
+    "genres": [
+      "progressive bluegrass",
+      "new americana",
+      "bluegrass"
+    ],
+    "gigs": [
+      {
+        "date": "2011-05-21T23:00:00.000Z"
+      }
+    ]
+  },
+  "Pearl Jam": {
+    "echonestId": "ARFVYJI1187B9B8E13",
+    "genres": [
+      "grunge",
+      "alternative rock",
+      "post-grunge",
+      "permanent wave",
+      "rock"
+    ],
+    "gigs": [
+      {
+        "date": "2000-06-02T23:00:00.000Z"
+      }
+    ]
+  },
+  "Ben Folds": {
+    "echonestId": "AR76NY61187FB4F82F",
+    "genres": [
+      "piano rock",
+      "neo mellow",
+      "indie christmas",
+      "pop rock",
+      "permanent wave",
+      "pop christmas"
+    ],
+    "gigs": [
+      {
+        "date": "2001-09-10T23:00:00.000Z"
+      }
+    ]
+  },
+  "Snuff": {
+    "echonestId": "AR3B6OB1187FB47C14",
+    "genres": [],
+    "gigs": [
+      {
+        "date": "2000-05-11T23:00:00.000Z"
+      }
+    ]
+  },
+  "Cowboy Junkies": {
+    "echonestId": "ARU5ZVG1187B9A6E97",
+    "genres": [
+      "roots rock",
+      "alternative country",
+      "melancholia",
+      "country rock",
+      "singer-songwriter",
+      "cowpunk",
+      "lilith",
+      "folk",
+      "folk-pop",
+      "folk rock"
+    ],
+    "gigs": [
+      {
+        "date": "2004-10-08T23:00:00.000Z"
+      }
+    ]
+  },
+  "Laura Cantrell": {
+    "echonestId": "ARAPRJI1187B9ACEBD",
+    "genres": [
+      "alternative country",
+      "new americana",
+      "folk",
+      "cowpunk",
+      "outlaw country"
+    ],
+    "gigs": [
+      {
+        "date": "2002-12-02T00:00:00.000Z"
+      },
+      {
+        "date": "2011-05-06T18:30:00.000Z"
+      },
+      {
+        "date": "2003-01-29T00:00:00.000Z"
+      }
+    ]
+  },
+  "People Under The Stairs": {
+    "echonestId": "ARBX5291187B997B3F",
+    "genres": [
+      "underground hip hop",
+      "turntablism",
+      "hip hop",
+      "alternative hip hop",
+      "acid jazz"
+    ],
+    "gigs": [
+      {
+        "date": "2006-10-10T23:00:00.000Z"
+      }
+    ]
+  },
+  "Ratdog": {
+    "echonestId": "ARFSAP61187FB3BADA",
+    "genres": [
+      "jam band"
+    ],
+    "gigs": [
+      {
+        "date": "2003-08-26T23:00:00.000Z"
+      }
+    ]
+  },
+  "Dananananaykroyd": {
+    "echonestId": "ARZQB3X1187FB47E1B",
+    "genres": [
+      "math pop"
+    ],
+    "gigs": [
+      {
+        "date": "2011-06-03T18:30:00.000Z"
+      }
+    ]
+  },
+  "Loudon Wainwright": {
+    "echonestId": "ARV1JVD1187B9AD195",
+    "genres": [
+      "folk",
+      "traditional folk",
+      "singer-songwriter",
+      "folk rock",
+      "roots rock",
+      "folk-pop"
+    ],
+    "gigs": [
+      {
+        "date": "2003-10-14T23:00:00.000Z"
+      }
+    ]
+  },
+  "Therion": {
+    "echonestId": "ARZN98V1187B990D1D",
+    "genres": [
+      "gothic metal",
+      "progressive metal",
+      "symphonic metal",
+      "swedish metal",
+      "gothic symphonic metal",
+      "power metal",
+      "folk metal",
+      "metal",
+      "melodic death metal",
+      "viking metal",
+      "symphonic black metal",
+      "neo classical metal"
+    ],
+    "gigs": [
+      {
+        "date": "1998-09-23T23:00:00.000Z"
+      }
+    ]
+  },
+  "String Cheese Incident": {
+    "echonestId": "ARWTFGY1187B992CBA",
+    "genres": [
+      "jam band"
+    ],
+    "gigs": [
+      {
+        "date": "2004-03-31T23:00:00.000Z"
+      }
+    ]
+  },
+  "Ben Folds Five": {
+    "echonestId": "ARBAN8S1187FB4D22F",
+    "genres": [
+      "piano rock",
+      "power pop",
+      "permanent wave",
+      "pop rock",
+      "alternative rock",
+      "neo mellow"
+    ],
+    "gigs": [
+      {
+        "date": "1999-12-20T00:00:00.000Z"
+      },
+      {
+        "date": "1997-03-02T00:00:00.000Z"
+      }
+    ]
+  },
+  "Gomez": {
+    "echonestId": "ARYW4BX1187B98DDE8",
+    "genres": [
+      "britpop",
+      "madchester",
+      "alternative rock",
+      "rock"
+    ],
+    "gigs": [
+      {
+        "date": "1999-10-14T23:00:00.000Z"
+      }
+    ]
+  },
+  "Feeder": {
+    "echonestId": "ARFG2HF1187FB3D4EC",
+    "genres": [
+      "britpop",
+      "welsh rock",
+      "rock",
+      "post-grunge",
+      "pop rock",
+      "madchester",
+      "alternative rock"
+    ],
+    "gigs": [
+      {
+        "date": "1999-10-02T23:00:00.000Z"
+      }
+    ]
+  },
+  "Even In Blackouts": {
+    "echonestId": "ARCP84R1187B991789",
+    "genres": [
+      "power-pop punk",
+      "deep power-pop punk",
+      "orgcore"
+    ],
+    "gigs": [
+      {
+        "date": "2005-02-06T00:00:00.000Z"
+      },
+      {
+        "date": "2005-02-04T00:00:00.000Z"
+      },
+      {
+        "date": "2006-11-11T00:00:00.000Z"
+      }
+    ]
+  },
+  "The Lightning Seeds": {
+    "echonestId": "ARTAACA1187B9B73DE",
+    "genres": [
+      "madchester",
+      "britpop",
+      "new wave",
+      "new romantic",
+      "new wave pop"
+    ],
+    "gigs": [
+      {
+        "date": "1999-11-28T00:00:00.000Z"
+      }
+    ]
+  },
+  "Presidents of the USA": {
+    "echonestId": "ARXDFN01187B9AE80E",
+    "genres": [
+      "alternative rock",
+      "post-grunge",
+      "grunge",
+      "pop rock",
+      "funk metal",
+      "power pop",
+      "comic",
+      "ska punk",
+      "funk rock"
+    ],
+    "gigs": [
+      {
+        "date": "2005-08-16T23:00:00.000Z"
+      }
+    ]
+  },
+  "Peter Rowan": {
+    "echonestId": "ARK60RL1187FB3A130",
+    "genres": [
+      "bluegrass",
+      "progressive bluegrass"
+    ],
+    "gigs": [
+      {
+        "date": "2003-11-26T00:00:00.000Z"
+      }
+    ]
+  },
+  "Against Me ": {
+    "echonestId": "ARDUFS01187FB4CF5E",
+    "genres": [
+      "folk punk",
+      "melodic hardcore",
+      "skate punk",
+      "orgcore",
+      "punk"
+    ],
+    "gigs": [
+      {
+        "date": "2014-11-15T19:00:00.000Z"
+      }
+    ]
+  },
+  "Kacey Musgraves ": {
+    "echonestId": "AROJNKE11EB9C8253F",
+    "genres": [
+      "country dawn",
+      "deep contemporary country",
+      "modern country rock",
+      "contemporary country",
+      "texas country",
+      "country road",
+      "outlaw country"
+    ],
+    "gigs": [
+      {
+        "date": "2014-07-08T18:00:00.000Z"
+      }
+    ]
+  },
+  "Jurassic 5": {
+    "echonestId": "AREGC1Z1187B995A90",
+    "genres": [
+      "underground hip hop",
+      "hip hop",
+      "turntablism",
+      "rap",
+      "old school hip hop",
+      "alternative hip hop",
+      "rap rock",
+      "east coast hip hop",
+      "hardcore hip hop"
+    ],
+    "gigs": [
+      {
+        "date": "2014-06-20T18:00:22.000Z"
+      }
+    ]
+  },
+  "Samamidon": {
+    "echonestId": "ARTJ6AE1187B98CCC5",
+    "genres": [
+      "stomp and holler",
+      "indie folk",
+      "freak folk",
+      "slow core",
+      "new americana",
+      "new weird america",
+      "chamber pop",
+      "folk"
+    ],
+    "gigs": [
+      {
+        "date": "2008-11-10T00:00:00.000Z"
+      }
+    ]
+  },
+  "Ugly Duckling": {
+    "echonestId": "ARBYVIH1187B9B9F64",
+    "genres": [
+      "underground hip hop",
+      "turntablism",
+      "hip hop",
+      "old school hip hop",
+      "acid jazz",
+      "rap",
+      "alternative hip hop",
+      "rap rock"
+    ],
+    "gigs": [
+      {
+        "date": "2006-05-03T23:00:00.000Z"
+      }
+    ]
+  },
+  "The Deadly Gentlemen": {
+    "echonestId": "ARXTFAE122CC3B12E6",
+    "genres": [
+      "progressive bluegrass"
+    ],
+    "gigs": [
+      {
+        "date": "2012-03-21T00:00:00.000Z"
+      }
+    ]
+  },
+  "Less Than Jake": {
+    "echonestId": "ARG8DXO1187B9AF743",
+    "genres": [
+      "ska punk",
+      "ska",
+      "skate punk",
+      "melodic hardcore",
+      "pop punk",
+      "punk"
+    ],
+    "gigs": [
+      {
+        "date": "2001-04-10T23:00:00.000Z"
+      }
+    ]
+  },
+  "Gong": {
+    "echonestId": "ARCZD5Y1187B9ADDF5",
+    "genres": [
+      "canterbury scene",
+      "space rock",
+      "zolo",
+      "kraut rock",
+      "art rock",
+      "experimental",
+      "symphonic rock",
+      "progressive rock"
+    ],
+    "gigs": [
+      {
+        "date": "2000-11-26T00:00:00.000Z"
+      }
+    ]
+  },
+  "The Vandals": {
+    "echonestId": "ARW0K5F1187B9AFCC0",
+    "genres": [
+      "skate punk",
+      "punk",
+      "punk christmas",
+      "melodic hardcore",
+      "heavy christmas",
+      "ska punk",
+      "hardcore punk",
+      "ska",
+      "pop punk"
+    ],
+    "gigs": [
+      {
+        "date": "2000-10-16T23:00:00.000Z"
+      }
+    ]
+  },
+  "My Life Story": {
+    "echonestId": "ARENI8E1187FB367EB",
+    "genres": [
+      "britpop",
+      "chamber pop"
+    ],
+    "gigs": [
+      {
+        "date": "1997-12-01T00:00:00.000Z"
+      }
+    ]
+  },
+  "Jeff Rosenstock": {
+    "echonestId": "ARLMACC1187FB443F5",
+    "genres": [
+      "folk punk",
+      "alternative emo"
+    ],
+    "gigs": [
+      {
+        "date": "2016-03-20T19:00:00.000Z"
+      }
+    ]
+  },
+  "Brian Fallon": {
+    "echonestId": "AROXVEE12086C15BA4",
+    "genres": [],
+    "gigs": [
+      {
+        "date": "2016-04-06T18:00:00.000Z"
+      }
+    ]
+  },
+  "Public Service Broadcasting": {
+    "echonestId": "ARFHKLB136658E6A24",
+    "genres": [],
+    "gigs": [
+      {
+        "date": "2016-02-08T19:00:00.000Z"
+      }
+    ]
+  }
+}

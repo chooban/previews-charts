@@ -26,69 +26,52 @@ function setup() {
 }
 
 function gigsByYear(selection, data, config) {
-  const gigs = _.chain(data)
-                  .map((artist) => artist.gigs)
-                  .flattenDeep()
-                  .map((gig) => gig.date.substring(0, 4))
-                  .countBy()
-                  .mapValues((v,k) => {
-                    return {
-                      'year': k,
-                      'count': v
-                    }
-                  })
-                  .values()
-                  .value();
+  const gigs = d3.nest()
+    .key((gig) => gig.date.substring(0,4))
+    .rollup((d) => d.length)
+    .entries(_.flattenDeep(_.map(data, (artist) => artist.gigs)))
 
   const yExtent = fc.util.extent()
-    .fields(['count'])
+    .fields(['values'])
     .include([0])
     .pad([0, 0.2]);
 
   const chart = fc.chart.cartesian(d3.scale.ordinal(), d3.scale.linear())
     .chartLabel('Gigs By Year')
-    .xDomain(_.map(gigs, y => y.year))
+    .xDomain(_.map(gigs, y => y.key))
     .yDomain(yExtent(gigs))
     .yTicks(5)
     .yNice();
 
   const series = fc.series.bar()
-    .xValue((d) => d.year)
-    .yValue((d) => d.count)
+    .xValue((d) => d.key)
+    .yValue((d) => d.values)
     .decorate((s) => {
       s.enter().select('path')
         .on('click', function(d) {
-          const gigsByYear = _.chain(data)
+          const filteredGigs = _.chain(data)
             .map((artist) => artist.gigs)
             .flattenDeep()
-            .filter((gig) => gig.date.substring(0, 4) === '' + d.year)
-            .map((gig) => {
-              const gigDate = new Date(gig.date);
-              return {
-                'month': months[gigDate.getMonth()]
-              };
-            })
-            .countBy(_.property('month'))
-            .mapValues((v, k) => {
-              return {
-                'month': k,
-                'count': v
-              };
-            })
-            .values()
+            .filter((gig) => gig.date.substring(0, 4) === '' + d.key)
             .value();
 
-          series.xValue((d) => d.month);
+          const gigs = d3.nest()
+            .key((gig) => { 
+              console.log("Looking up " + gig.date.substring(5,2));
+              return months[+gig.date.substring(5,2)]
+            })
+            .rollup((d) => d.length)
+            .entries(filteredGigs);
 
           chart
             .chartLabel("Gigs By Month For " + d.year)
             .xDomain(months)
-            .yDomain(yExtent(gigsByYear));
+            .yDomain(yExtent(gigs));
 
           chart.plotArea(series);
 
           selection
-            .datum(gigsByYear)
+            .datum(gigs)
             .transition()
             .duration(1500)
             .call(chart);
@@ -104,6 +87,8 @@ function gigsByYear(selection, data, config) {
 
   selection
     .datum(gigs)
+    .transition()
+    .duration(1500)
     .call(chart);
 }
 
