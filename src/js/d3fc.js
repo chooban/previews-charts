@@ -56,10 +56,7 @@ function gigsByYear(selection, data, config) {
             .value();
 
           const gigs = d3.nest()
-            .key((gig) => { 
-              console.log("Looking up " + gig.date.substring(5,2));
-              return months[+gig.date.substring(5,2)]
-            })
+            .key((gig) => months[+gig.date.substring(5,2)])
             .rollup((d) => d.length)
             .entries(filteredGigs);
 
